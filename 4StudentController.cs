@@ -29,14 +29,18 @@ namespace YourApp.Controllers
             var student = _studentService.GetStudent(id);
             if (student == null)
             {
-                return NotFound();
+                return NotFound(); //el servidor devuelve respuesta HTTP 404 que no fue encontrado
             }
             return Ok(student);
         }
 
-        [HttpPost]      
-        public ActionResult<Student> CreateStudent(Student newStudent)
+        [HttpPost]      //método de acción que toma un objeto Student llamado newStudent como parámetro
+        public ActionResult<Student> CreateStudent(Student newStudent) 
         {
+             if (!ModelState.IsValid) //ModelState comprueba si los datos del modelo son válidos ( propiedad del controlador)
+    {
+        return BadRequest(ModelState);  
+    }
             _studentService.CreateStudent(newStudent);
             return CreatedAtAction(nameof(GetStudent), new { id = newStudent.Id }, newStudent);
         }
