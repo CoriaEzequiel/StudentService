@@ -1,5 +1,10 @@
 using System.Collections.Generic;
 using YourApp.Models;
+//logica del negocio - sabe como llevar a cabo las operaciones
+//contiene los métodos para manejar el CRUD         para luego ser llamados por el controlador StudentController
+
+//Por ejemplo, el método GetAllStudents() en StudentService devuelve una lista de todos los estudiantes.
+// El controlador puede llamar a este método para obtener todos los estudiantes cuando se recibe una solicitud HTTP GET.
 
 namespace YourApp.Services          //implementación real de las operaciones definidas en capa de interfaz
 {

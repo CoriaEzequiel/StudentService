@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using YourApp.Models;
 using YourApp.Services;
 
-namespace YourApp.Controllers
+namespace YourApp.Controllers       //llama al método _students del servicio (StudentServices) 
 {
     [Route("api/student")]
     [ApiController]
