@@ -34,22 +34,22 @@ namespace YourApp.Controllers
             return Ok(student);
         }
 
-        [HttpPost]
+        [HttpPost]      
         public ActionResult<Student> CreateStudent(Student newStudent)
         {
             _studentService.CreateStudent(newStudent);
             return CreatedAtAction(nameof(GetStudent), new { id = newStudent.Id }, newStudent);
         }
 
-        [HttpPut("{id}")]
-        public IActionResult UpdateStudent(int id, Student updatedStudent)
+        [HttpPut("{id}")] //responderá a la ruta       
+        public IActionResult UpdateStudent(int id, Student updatedStudent) //toma un ID de estudiante y un objeto Student llamado updatedStudent
         {
-            if (id != updatedStudent.Id)
+            if (id != updatedStudent.Id) //a verifica si el ID proporcionado en la ruta con el del estudiante
             {
-                return BadRequest();
+                return BadRequest(); // si no coincide  arroja 400
             }
-            _studentService.UpdateStudent(updatedStudent);
-            return NoContent();
+            _studentService.UpdateStudent(updatedStudent);      //sino llama  al método updateStudent para actualizar
+            return NoContent();     // si sale todo bien devuelve 204: indica que la operación fue exitosa.
         }
 
         [HttpDelete("{id}")]
@@ -60,3 +60,22 @@ namespace YourApp.Controllers
         }
     }
 }
+
+
+
+//GET: Este método se utiliza para solicitar datos de un recurso especificado.
+// No modifica ningún dato en el servidor.
+
+
+
+//POST: Este método se utiliza para enviar datos para ser procesados => a un recurso especificado.
+// Los datos se incluyen en el cuerpo de la solicitud. 
+//Esto puede resultar en la creación de un nuevo recurso o los datos pueden ser enviados para su almacenamiento.
+
+// creacion de un nuevo estudiante. 
+// almacenar en una base de datos.
+
+
+
+//PUT: Este método se utiliza para actualizar un recurso existente con datos nuevos.
+// Al igual que POST, los datos se incluyen en el cuerpo de la solicitud.
